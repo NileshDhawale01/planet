@@ -1,10 +1,14 @@
 package com.jpamapping.relation.entities;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
@@ -41,4 +45,6 @@ public class Sun {
 	@Column(name = "sun_rotation_period", length = 200)
 	private Double sunRotationPeriod;
 
+	@OneToMany(mappedBy = "sun" , fetch = FetchType.LAZY )
+	private List<Planet> planets;
 }
